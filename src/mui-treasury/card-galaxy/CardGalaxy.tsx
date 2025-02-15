@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { episodes } from "../../components/episodes";
 import Card from "@mui/material/Card";
 import CardMedia from "@mui/material/CardMedia";
@@ -79,7 +80,7 @@ export function CardGalaxy() {
         {episodes.map((episode) => (
           <div key={episode.id} className="min-w-[60vw] sm:min-w-0">
             <StyledCard>
-              <a href={episode.link}>
+              <Link to={episode.link}>
                 <StyledCardMedia image={episode.image} />
                 <Content>
                   <Info>
@@ -87,7 +88,7 @@ export function CardGalaxy() {
                     <InfoSubtitle className={episode.subtitleColor}>{episode.subtitle}</InfoSubtitle>
                   </Info>
                 </Content>
-              </a>
+              </Link>
             </StyledCard>
           </div>
         ))}
