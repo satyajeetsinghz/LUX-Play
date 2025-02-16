@@ -15,6 +15,11 @@ const LuciferEpisodeStory = () => {
     aboutEpisode: { title: "About the Episode", component: <AboutEpisode /> },
   };
 
+  const handleSectionClick = (key) => {
+    setActiveSection(key);
+    setIsSidebarOpen(false); // Auto-hide sidebar after selection
+  }
+
   return (
     <div className="sm:flex w-full h-screen bg-[url('img/lucifer_background.jpg')] bg-cover bg-center text-white">
       {/* Sidebar Navigation */}
@@ -28,7 +33,7 @@ const LuciferEpisodeStory = () => {
         {isSidebarOpen && Object.keys(sections).map((key) => (
           <button
             key={key}
-            onClick={() => setActiveSection(key)}
+            onClick={() => handleSectionClick(key)} // Auto-hide sidebar after click
             className={`p-3 text-left rounded- transition-all ${activeSection === key ? "bg-red-600" : "bg-zinc-800/50 hover:bg-red-500"
               }`}
           >
@@ -48,7 +53,7 @@ const LuciferEpisodeStory = () => {
         {isSidebarOpen && Object.keys(sections).map((key) => (
           <button
             key={key}
-            onClick={() => setActiveSection(key)}
+            onClick={() => handleSectionClick(key)} // Auto-hide sidebar on click
             className={`p-3 text-left rounded- transition-all ${activeSection === key ? "bg-red-600" : "bg-zinc-800/50 hover:bg-red-500"
               }`}
           >
@@ -58,7 +63,7 @@ const LuciferEpisodeStory = () => {
       </div>
 
       {/* Main Content Area */}
-      <div className={`p-6 flex flex-col items-center justify-center transition-all duration-100 ease-in-out mt-[1.5rem] sm:mt-0 ${isSidebarOpen ? "hidden sm:block" : "w-full"}`}>
+      <div className={`p-6 flex flex-col items-center justify-center transition-all duration-100 ease-in-out mt-[0rem] sm:mt-0 ${isSidebarOpen ? "hidden sm:block" : "w-full"}`}>
         <div className="inline-flex items-center">
           <img className='w-7 invert mx-1 -translate-y-1.5' src="/img/play-circle.svg" alt="" />
           <h2 className="text-xl font-semibold text-red-500 mb-4">{sections[activeSection].title}</h2>
